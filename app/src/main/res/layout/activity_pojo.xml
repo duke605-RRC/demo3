@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- the class attribute generates a binding class with the same name given -->
+    <data class="POJOBinding">
+        <variable name="person" type="io.github.duke605.bindingdemo.item.Person" />
+    </data>
+
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="io.github.duke605.bindingdemo.POJOActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:text="Name: "
+            android:id="@+id/nameLabel" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{person.name}"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/nameLabel" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ageLabel"
+            android:text="Age: "
+            android:layout_below="@+id/nameLabel"
+            android:layout_alignParentStart="true" />
+
+        <!-- person.age returns an in and the return must be a string to i'm converting it to a string -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(person.age)}"
+            android:layout_alignBaseline="@+id/ageLabel"
+            android:layout_toEndOf="@+id/ageLabel" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Observable"
+            android:onClick="nextActivity"
+            android:id="@+id/nextActivity"
+            android:layout_below="@+id/ageLabel"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+
+</layout>
